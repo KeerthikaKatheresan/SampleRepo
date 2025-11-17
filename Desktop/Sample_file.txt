@@ -1,0 +1,4 @@
+Sample git text file
+Hello my name is Keerthika Kadhiresan
+I did my degree at SASTRA University
+This is created on Day 1 (17/11/2025)
