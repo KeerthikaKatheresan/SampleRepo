@@ -67,10 +67,77 @@ WHERE column_name IS NOT NULL;
 Tip: Always use IS NULL to look for NULL values.
 
 SQL UPDATE Statement
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+If no where clause all column will be updated.
+
+MySQL DELETE Statement:
+DELETE FROM table_name WHERE condition;
+DELETE FROM Customers WHERE CustomerName='Raju';->delete raju row only
+DELETE FROM table_name;->Delete all records.
+
+
+MySQL LIMIT Clause:(specify the number of records to return.)
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+LIMIT number;
+
+SELECT * FROM Customers
+LIMIT 3 OFFSET 4;->skip the first 3 and show the next 4 records
+
+
+SQL CREATE DB:
+CREATE DATABASE databasename;
+SHOW DATABASES;
+
+SQL DROP DB:
+DROP DATABASE databasename;
+
+SQL CREATE TABLE:
+CREATE TABLE Persons (
+    PersonID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Address varchar(255),
+    City varchar(255)
+);
+Create new table based on existing table and fill old table value:
+CREATE TABLE new_table_name AS
+    SELECT column1, column2,... //columns that are needed
+    FROM existing_table_name
+    WHERE ....;  //where is optional
+
+SQL DROP TABLE:
+
+DROP TABLE table_name;->Delete entire table
+
+MySQL TRUNCATE TABLE:
+TRUNCATE TABLE table_name;->Delete only the data but not the table structure.
+
+MySQL ALTER TABLE:(add,delete,modify)
+alter-add
+Syntax:ALTER TABLE table_name ADD column_name datatype;
+Eg:ALTER TABLE Customers ADD Email varchar(255);
+
+alter-drop
+ALTER TABLE table_name DROP column_name ;
+ALTER TABLE Customers DROP Email ;
+
+Alter-modify
+ALTER TABLE table_name MODIFY column_name datatype;
+ALTER TABLE Persons MODIFY COLUMN DateOfBirth year;
+
+
+
+
+
+
 
 
 SQL FUNCTIONS:
-select length('keerthikA');->9
+select length('keerthika');->9
 select length('keerthika\0');->10 \0 is will be considered as null (\0)=1 byte so 9+1=10
 select upper('keer');
 select lower('KEER');
@@ -105,6 +172,13 @@ SELECT TRUNCATE(RAND(),6)->Generates a random floating-point number between 0 an
 SELECT ROUND(RAND()*1000000);->FOR OTP GENERATION
 SELECT NOW();
 SELECT CURDATE();
+SELECT CURTIME();
+SELECT DATEDIFF('2025-02-05','2004-02-05'); o/p:7671 Sysntax:big date,small date ;date format:yyyy/mm/dd
+SELECT DATE_ADD('2025-01-01', INTERVAL 10 DAY);o/p:2025-01-11
+SELECT YEAR('2025-11-17') AS YearValue;->o/p YearValue 2025
+SELECT MONTH('2025-11-17') ;->o/p 11
+SELECT DAY('2025-11-17') ;->o/p 17
+
 SELECT DAYNAME('2025-11-18');
 SELECT DAYNAME(CURDATE());
 SELECT DATE(NOW());
@@ -133,6 +207,12 @@ SELECT MAX(Price) as largestprice
 FROM Products;
 
 Note:When you use MIN() or MAX(), the returned column will not have a descriptive name. To give the column a descriptive name, use the AS keyword
+
+MySQL COUNT(), AVG() and SUM() Functions:
+SELECT COUNT(column_name) FROM table_name WHERE condition;
+COUNT(*)->NULL VALUES COUNTED
+SELECT AVG(column_name) FROM table_name WHERE condition;
+SELECT SUM(column_name) FROM table_name WHERE condition;
 
 
 
