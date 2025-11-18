@@ -1,0 +1,147 @@
+Select query:
+SELECT CustomerName, City FROM Customers;
+SELECT * FROM Customers;
+
+SELECT DISTINCT Statement:
+SELECT DISTINCT Country FROM Customers;
+SELECT COUNT(DISTINCT column_name) FROM Customers;
+
+SQL WHERE Clause:
+SELECT * FROM Customers WHERE Country='Mexico';->for text '' mostly sometimes ""
+SELECT * FROM Customers WHERE CustomerID=1;->for number no quotes 
+we can use select,update,delete with where class
+operators used =,>,<,>=,<=,<>,!=,BETWEEN,LIKE,IN(similar to or)
+
+ORDER BY Keyword
+
+SELECT column1, column2, ...
+FROM table_name
+ORDER BY column1, column2, ... ASC|DESC;
+For string values the ORDER BY keyword will order alphabetically
+eg:SELECT * FROM Customers
+ORDER BY Country, CustomerName;
+it orders by Country, but if some rows have the same Country, it orders them by CustomerName
+
+SQL AND Operator-displays a record if all the conditions are TRUE.
+SQL OR Operator-displays a record if any the conditions are TRUE.
+You can combine AND OR but use paranthesis
+SELECT * FROM Customers
+WHERE Country = 'Spain' AND (CustomerName LIKE 'G%' OR CustomerName LIKE 'R%');
+Syntax:SELECT column1, column2, ...
+FROM table_name
+WHERE condition1 AND condition2 AND condition3 ...;
+
+SQL OR
+SELECT *
+FROM Customers
+WHERE Country = 'Germany' OR Country = 'Spain';
+if you want to return all customers from Germany but also those from Spain
+
+
+SQL NOT Operator:(NEGATIVE RESULT)
+
+SELECT column1, column2, ...
+FROM table_name
+WHERE NOT condition;
+Eg:SELECT * FROM Customers
+WHERE NOT Country = 'Spain';
+can be used with like,between,in,greater than, lesser than
+
+SQL INSERT INTO Statement (2 ways to insert)
+1.INSERT INTO table_name (column1, column2, column3, ...)
+VALUES (value1, value2, value3, ...);
+2.If you are adding values for all the columns of the table, you do not need to specify the column names in the SQL query
+Syntax:INSERT INTO table_name
+VALUES (value1, value2, value3, ...);
+
+
+SQL NULL Values:
+A field with a NULL value is a field with no value.
+How to Test for NULL Values?We will have to use the IS NULL and IS NOT NULL operators instead.
+Syntax:SELECT column_names
+FROM table_name
+WHERE column_name IS NULL;
+Syntax:SELECT column_names
+FROM table_name
+WHERE column_name IS NOT NULL;
+Tip: Always use IS NULL to look for NULL values.
+
+SQL UPDATE Statement
+
+
+SQL FUNCTIONS:
+select length('keerthikA');->9
+select length('keerthika\0');->10 \0 is will be considered as null (\0)=1 byte so 9+1=10
+select upper('keer');
+select lower('KEER');
+select length(trim('  keer  '));
+select trim('  keer  ');
+select rtrim('  keer  ');
+SELECT REPLACE('keerthika','ee','a'); -- strig,from_string,to_string
+select substr('Keerthika Devi',9,3); -- string,start_position,length ->o/p:a D 
+note:1 based indexing used
+select empname,upper(empname) as up_empname from emptable;
+SELECT UPPER(empname) AS up_empname FROM emptable;
+select concat(firstname,'D',lastname)as name from student;
+select right(name,3) from students; ->gives last 3 char of name column
+select instr('Keerthika','th');->it will the position ;o/p:5
+If not found return 0/NULL
+select instr('Keerthika','z');->o/p:0
+select reverse('Keerthika');
+SELECT LPAD('123', 5, '0');->string,length,pad_string ;o/p:00123
+SELECT RPAD('123', 5, '0');->string,length,pad_string ;o/p:12300
+SELECT ABS(-900);->O/P:900
+SELECT ROUND(34.6);->O/P:35
+SELECT CEIL(34.4);->O/P:35
+SELECT FLOOR(34.9);->O/P:34
+SELECT MOD(23,3);->O/P:2
+SELECT POWER(5,4);->O/P:625
+SELECT SQRT(144);->O/P:12
+SELECT SIGN(-90);->O/P:-1
+SELECT SIGN(90);->O/P:1
+SELECT SIGN(0);->O/P:0
+SELECT TRUNCATE(67.896543,2);->O/P:67.89
+SELECT TRUNCATE(RAND(),6)->Generates a random floating-point number between 0 and 1.
+SELECT ROUND(RAND()*1000000);->FOR OTP GENERATION
+SELECT NOW();
+SELECT CURDATE();
+SELECT DAYNAME('2025-11-18');
+SELECT DAYNAME(CURDATE());
+SELECT DATE(NOW());
+SELECT TIME(NOW());
+SELECT YEAR(NOW());
+SELECT YEAR('2004-02-05');
+
+
+SQL Aggregate Functions:op is always a single value
+Aggregate functions are often used with the GROUP BY clause of the SELECT statement.
+Aggregate functions ignore null values (except for COUNT(*)).
+eg:
+SaleID	Amount
+1	100
+2	NULL
+3	200
+4	300
+5	NULL
+SELECT COUNT(Amount) FROM Sales;->o/p:3
+SELECT COUNT(*) FROM Sales;->o/p:5
+
+SQL MIN() and MAX() Functions:
+SELECT MIN(Price) as smallprice
+FROM Products;
+SELECT MAX(Price) as largestprice
+FROM Products;
+
+Note:When you use MIN() or MAX(), the returned column will not have a descriptive name. To give the column a descriptive name, use the AS keyword
+
+
+
+
+
+
+
+
+
+
+
+
