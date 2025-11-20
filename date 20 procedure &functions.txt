@@ -1,0 +1,88 @@
+1.SELECT name 
+FROM emp 
+WHERE salary > (SELECT MIN(salary) FROM emp);
+2.SELECT *FROM emp;
+select deptname from department where deptid IN(select deptid from emp where salary>=61000);
+4.select count(id) from emp;
+select id,name from employee_table where joining_date<(select 
+
+----------------
+Procedures:
+1.Calculate grade:
+delimiter //
+create procedure printgrade(in studentmarks int)
+begin
+	declare grade varchar(10);
+    IF studentMarks>=80 THEN 
+		SET grade='A';
+	ELSEIF studentMarks>=60 THEN
+		SET grade='B';
+	ELSEIF studentMarks>=40 THEN
+		SET grade='C';
+	ELSE 
+		SET grade='F';
+	END IF;
+	Select concat('Grade: ',grade)as result;
+end //
+delimiter ;
+
+call printgrade(72);
+
+2.Print 1-10 using loop
+delimiter //
+create procedure printnumber()
+begin
+	declare i int default 1;
+		while i<=10 do
+			select i;
+            set i=i+1;
+		end while;
+end //
+delimiter //
+
+call printnumber();
+
+3.Print using repeat:
+delimiter //
+create procedure usingrepeat()
+begin
+	declare i int default 1;
+    repeat 
+		select i;
+        set i=i+1;
+	until i>=10
+    end repeat;
+end //
+delimiter 
+
+call usingrepeat();
+
+4.Function to print full name:
+delimiter //
+create function getfullname(fname varchar(10),lname varchar(10))
+returns varchar(50)
+deterministic
+begin
+ return concat(fname,lname) ;
+
+ end //
+ delimiter ;
+ 
+ select getfullname('Keerthika','Kadhiresan') as fullname;
+
+5.delimiter //
+create function checksalary(eid int)
+returns varchar(50)
+deterministic
+begin 
+	declare sal int;
+    select salary into sal from employee where id=eid;
+    if sal>60000 then
+		return 'High-salary';
+	else
+		return 'low-salary';
+	end if;
+end //
+delimiter ;
+
+select checksalary(5);
