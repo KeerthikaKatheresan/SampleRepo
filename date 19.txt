@@ -315,6 +315,51 @@ UNION
 SELECT City FROM Suppliers
 ORDER BY City;
 
+UNION ALL Operator:(including any duplicates.)
+SELECT column_name(s) FROM table1
+UNION ALL
+SELECT column_name(s) FROM table2;
+
+SELECT City FROM Customers
+UNION ALL
+SELECT City FROM Suppliers
+ORDER BY City;
+
+GROUP BY Statement:used with aggregrate statement
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country;
+
+HAVING Clause
+The HAVING clause was added to SQL because the WHERE keyword cannot be used with aggregate functions.
+
+
+SELECT column_name(s)
+FROM table_name
+WHERE condition
+GROUP BY column_name(s)
+HAVING condition
+ORDER BY column_name(s);
+
+SELECT COUNT(CustomerID), Country
+FROM Customers
+GROUP BY Country
+HAVING COUNT(CustomerID) > 5;
+
+EXISTS Operator:
+The EXISTS operator is used to test for the existence of any record in a subquery.
+
+The EXISTS operator returns TRUE if the subquery returns one or more records.
+SELECT column_name(s)
+FROM table_name
+WHERE EXISTS
+(SELECT column_name FROM table_name WHERE condition);
+
+SELECT SupplierName
+FROM Suppliers
+WHERE EXISTS (SELECT ProductName FROM Products WHERE Products.SupplierID = Suppliers.supplierID AND Price < 20);
+
+
 
 SQL FUNCTIONS:
 select length('keerthika');->9
@@ -396,12 +441,39 @@ SELECT AVG(column_name) FROM table_name WHERE condition;
 SELECT SUM(column_name) FROM table_name WHERE condition;
 
 
+To find execution of queries:
+set profiling=1;
+select productname from products where buyprice>(select avg(buyprice) from products) order by productname;
+select *from offices;
+show profiles;
+show profile for query 8;
+
+Index:
+B+tree used->logarithmic values la Time complexity
+Fast retrieval
+But update(DML queries) takes time because we should update index also-drop index and do this
+
+This will allow duplicates
+CREATE INDEX index_name
+ON table_name (column1, column2, ...);
+
+This will not allow duplicates:
+CREATE UNIQUE INDEX index_name
+ON table_name (column1, column2, ...);
+Drop index:
+drop index index_name on table_name;
+drop index id1 on emp;
 
 
+Explain select* from emp where salary>5000;->gives details on table_name,index used,how many rows checked,joined used
 
+Built-in function/udf(user defined function) will always return scalar values(single values)
+Stored procedure may return 1/more values
+deterministic-whatever same i/p same o/p eg:i/p =85 ;grade='A'
+non-deterministic-changes always ;eg:now(),date()
 
+stored procedure->call procedure_name()->execute
+function->use select statement for calling like
+select function_name(param1,param2);
 
-
-
-
-
+Note:Select corresponds to Projection, from corresponds to Selection and where corresponds to cartesian product operations of Relational algebra.
