@@ -1,0 +1,84 @@
+package com.mphasis;
+
+public class HelloWorld {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		System.out.println("Vanakam");
+		int i=0;short s=0;long l=0;float fl=0.0f;double d=0.0;byte b=0;boolean bl=false;char ch='a'; //all these are default values of primitive data type
+		System.out.println(i);
+		System.out.println(s);
+		System.out.println(l);
+		System.out.println(fl);
+		System.out.println(d);
+		System.out.println(b);
+		System.out.println(bl);
+		System.out.println(ch);
+		
+		
+		//convert primitive data type to object->cast using Wrapper class
+		Integer i1=i; //implict casting will happen when primitive->object  //also called as boxing/auto-boxing->done by jvm
+		
+		
+		
+		//convert wrapper->primitive datatype	//also called as unboxing
+		int a1=i1.intValue();	// explicit /manual casting
+		//doubleValue(),floatValue(),longValue(),shortValue(),byteValue(),charValue(),booleanValue()
+		
+		
+		//Arthimetic operation:
+		int a=57;b=2;
+		System.out.println(a+b); //59
+		System.out.println(a-b);//55
+		System.out.println(a*b);//114
+		System.out.println(a/b);//28
+		System.out.println(a%b);//1
+		
+		//Unary operator
+		a++;//6
+		--a; //5
+		~a;//Bitwise complement
+		
+		int i=5,j=4;
+		System.out.println(i&j);	//101 &100=100=4
+		System.out.println(i|j);	//101|100=101=5
+		System.out.println(i^j);	//101 ^100=001=1 
+		System.out.println(i<<1); //left shift *by 2^1
+		System.out.println(i>>1);	//right shift /by 2^1
+		System.out.println(~i);
+		System.out.println(i>j);
+		System.out.println(i=j);
+		
+		
+		//Logical operators:
+		// && || ^ 
+		//ternary operator exp1 ?exp2 :exp3
+		(a > b) ? ((a > c) ? a : c) : ((b > c) ? b : c)
+		//compare for 4 variable
+				
+		int a=10,b=5;
+		int temp;
+		temp=a;
+		a=b;
+		b=temp;
+		
+		//without temp variable
+		a=a+b;
+		b=a-b;
+		a=a-b;
+		
+		//for 3 numbers
+		i=i+j+k;
+		j=i-j-k;
+		k=i-j-k;
+		i=i-j-k;
+				
+				
+	
+				
+		
+		
+	}
+
+}
+   
